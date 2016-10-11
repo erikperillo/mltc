@@ -1,0 +1,129 @@
+%presentation declaration
+\documentclass[11pt]{beamer}
+\usetheme{metropolis}
+
+%packages
+%beamer stuff
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
+%language
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+%images
+\usepackage{graphicx}
+\usepackage{float}
+
+%macros
+\newcommand{\img}[2][width=1.0\textwidth]
+	{\centering \includegraphics[#1]{img/#2}}
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\ttt}[1]{\texttt{#1}}
+
+%title
+\title{Classificação de texto}
+\subtitle{{\small com Hadoop + Spark Mlib}}
+\author{Erik Perillo, RA135582}
+\date{}
+\institute{Universidade Estadual de Campinas}
+
+\begin{document}
+
+\maketitle
+
+\section{Objetivos}
+
+\begin{frame}{Objetivos}
+	Um classificador de textos binário:
+	\begin{itemize}
+		\item Com uma das melhores técnicas atuais
+		\item Com grande volume de dados
+	\end{itemize}
+\end{frame}
+
+\section{Classificação de Texto}
+
+\begin{frame}{}
+	\img[width=1.0\linewidth]{text.png}
+\end{frame}
+
+\begin{frame}{Naive Bayes}
+	\img[width=0.7\linewidth]{naive.png}
+\end{frame}
+
+\section{O projeto}
+
+\begin{frame}{Overview}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\img[width=0.7\linewidth]{hadoop_logo.png}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\img[width=0.7\linewidth]{spark_logo.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Apache Spark}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Computação em \tit{batches} de alto desempenho
+				\item Análise de dados avançada
+				\item Processamento de \tit{stream} em tempo real
+				\item Interfaces para Java, Scala, Python
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\img[width=0.7\linewidth]{spark_logo.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Spark: componentes}
+	\img[width=0.5\linewidth]{spark_stack.png}
+
+	\img[width=0.5\linewidth]{hadoop_logo.png}
+\end{frame}
+
+\begin{frame}{Spark Mlib}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item Diversas técnicas de \tit{Machine Learning}
+				\item Desenvolvimento rápido e escalável
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\img[width=0.7\linewidth]{spark_mlib.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Juntando tudo}
+
+\begin{frame}{Juntando tudo}
+	\begin{itemize}
+		\item Tudo foi feito em Python :)
+		\item Foi implementada visualização pela linha da comando
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Flow dos dados}
+	\begin{itemize}
+		\item Arquivos de uma database entram (\ttt{20\_newsgroup})
+		\item Pré-processamento do texto é feito (\tit{stemming, stopwords...})
+		\item Conversão de texto para vetor de \tit{features} (\ttt{if-idf})
+		\item Textos positivos/negativos são convertidos para .csv
+		\item Arquivo .csv é convertido em formato para \tit{Spark}
+		\item Treinamento é feito com \tit{Naive Bayes}
+	\end{itemize}
+\end{frame}
+
+\section{Resultados}
+
+\end{document}

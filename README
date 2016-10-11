@@ -1,0 +1,1 @@
+This is a Naive Bayes text classifier using Spark Mlib that was built in 2 hours. I use the 20_newsgroup database.
